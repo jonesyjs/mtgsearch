@@ -1,4 +1,4 @@
-<mat-card *ngFor="let searchResult of searchResults" class="searchResult">
+<mat-card *ngFor="let searchResult of (this.deskSearchService.searchResults$ | async)" class="searchResult">
     <mat-card-title>
         <h3>{{searchResult.title}} - {{searchResult.formats}}</h3>
     </mat-card-title>

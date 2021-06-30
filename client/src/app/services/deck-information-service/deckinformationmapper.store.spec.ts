@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing'
 
 import { DeckInformationMapperService } from './deckinformationmapper.store';
-import { DeckShort } from '../models';
+import { DeckShort } from '../../models';
 
 describe('DeckinformationmapperService', () => {
   let service: DeckInformationMapperService,

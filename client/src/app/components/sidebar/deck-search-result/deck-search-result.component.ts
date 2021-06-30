@@ -1,10 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
-interface SearchResult {
-  title: string,
-  formats: string[],
-  colorTypes: string[]
-}
+import { DeckSearchService } from 'src/app/services/deck-search-service/deck-search.service';
 
 @Component({
   selector: 'app-deck-search-result',
@@ -13,13 +8,7 @@ interface SearchResult {
 })
 export class DeckSearchResultComponent implements OnInit {
 
-  searchResults: SearchResult[] = [
-    { title: "Red Deck Wins", formats: ['Standard', 'Commander'], colorTypes: ['Red'] },
-    { title: "Blue Counter", formats: ['Standard', 'Modern'], colorTypes: ['Blue'] },
-    { title: "Grixis Control", formats: ['Commander'], colorTypes: ['Black', 'Red', 'Blue'] }
-  ];
-
-  constructor() { }
+  constructor(public deskSearchService: DeckSearchService) { }
 
   ngOnInit(): void {
   }
