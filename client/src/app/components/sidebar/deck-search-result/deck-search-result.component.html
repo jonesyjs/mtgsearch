@@ -1,0 +1,18 @@
+<mat-card *ngFor="let searchResult of searchResults" class="searchResult">
+    <mat-card-title>
+        <h3>{{searchResult.title}} - {{searchResult.formats}}</h3>
+    </mat-card-title>
+    <mat-card-content>
+        <button 
+        *ngFor="let colorType of searchResult.colorTypes"
+        class="content"
+        mat-raised-button 
+        color="primary" 
+        matBadge="5" 
+        matBadgePosition="before" 
+        matBadgeColor="accent"
+        matBadgeSize="small">
+            {{colorType}}
+        </button>
+    </mat-card-content>
+</mat-card>

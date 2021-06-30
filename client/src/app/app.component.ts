@@ -9,13 +9,10 @@ import { HttpClient } from '@angular/common/http';
 export class AppComponent implements OnInit {
   title = 'client';
   obs: any;
-  constructor(private http: HttpClient) {
 
-  }
+  constructor(private http: HttpClient) {}
 
-  ngOnInit() {
-    this.getDecks()
-  }
+  ngOnInit() {}
 
   getDecks() {
     this.obs = this.http.get('http://localhost:3000/decks');
