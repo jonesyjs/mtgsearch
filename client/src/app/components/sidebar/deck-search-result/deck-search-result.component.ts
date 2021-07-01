@@ -13,4 +13,8 @@ export class DeckSearchResultComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  displayDeckTabs(id: number) {
+    const subscription = this.deskSearchService.getDeckById(id).subscribe();
+    subscription.unsubscribe();
+  }
 }
