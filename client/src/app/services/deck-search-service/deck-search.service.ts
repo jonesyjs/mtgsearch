@@ -9,7 +9,7 @@ import { DeckInformationMapperService } from '../deck-information-service/deckin
 })
 export class DeckSearchService {
   
-  private subjectDeckList = new BehaviorSubject<SearchResult[]>([{id: 0, title: 'hello', formats: ['modern'], colorTypes: ['black']}]);
+  private subjectDeckList = new BehaviorSubject<SearchResult[]>(null);
   searchResults$: Observable<SearchResult[]> = this.subjectDeckList.asObservable();
 
   private subjectDeck = new BehaviorSubject<DeckInformation>(null);
@@ -25,14 +25,8 @@ export class DeckSearchService {
   }
 
   getDeckById(id: Number): Observable<DeckInformation> {
-    console.log('we are here')
     return this.store.getDeckListFull().pipe(
-      map(deckList => {
-        console.log(deckList);
-        var x = deckList.filter(o => o.id == id)[0];
-        console.log(x);
-        return x;
-      }),
+      map(deckList => deckList.filter(o => o.id == id)[0]),
       tap(deck => this.subjectDeck.next(deck))
     )
   }

@@ -15,10 +15,12 @@ export interface DeckInformation {
     summary: {
         formats: string[],
         colorTypes: string[],
+        available: string[],
         rarities: RaritySummary[],
         manaCosts: ManaCostSummary[],
         cardTypes: CardTypeSummary[]
     }
+    cards: Card[]
 }
 
 export interface RaritySummary {
@@ -36,18 +38,25 @@ export interface CardTypeSummary {
     amountOf: number
 }
 
+export interface Card {
+    name: string,
+    colors: string[],
+    type: CardType,
+    manaCost: number
+}
+
 export enum Rarity {
-    Common,
-    Uncommon,
-    Rare,
-    Mythic
+    Common = 'Common',
+    Uncommon = 'Uncommon',
+    Rare = 'Rare',
+    Mythic = 'Mythic'
 }
 
 export enum CardType {
-    Creature,
-    Land,
-    Enchantment,
-    Artifact,
-    Instant,
-    Sorcery
+    Creature = 'Creature',
+    Land = 'Land',
+    Enchantment = 'Enchantment',
+    Artifact = 'Artifact',
+    Instant = 'Instant',
+    Sorcery = 'Sorcery'
 }

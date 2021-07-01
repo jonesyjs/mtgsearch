@@ -1,4 +1,4 @@
-<mat-tab-group class="tab-group" *ngIf="($deckSummary | async) as deckSummary">
+<mat-tab-group class="tab-group" *ngIf="(this.deckService.deck$ | async) as deckSummary">
     <mat-tab label="Deck Summary">
         <div class="tab">
             <h2>{{deckSummary.title}}</h2>
@@ -40,21 +40,21 @@
 
             <div>
                 <h3 class="contentHeader">Formats: </h3>
-                <button *ngFor="let format of formats" class="content" mat-raised-button color="primary" matBadge="5"
+                <button *ngFor="let format of deckSummary.summary.formats" class="content" mat-raised-button color="primary" matBadge="5"
                     matBadgePosition="before" matBadgeColor="accent" matBadgeSize="small">
                     {{format}}
                 </button>
             </div>
             <div>
                 <h3 class="contentHeader">Available: </h3>
-                <button *ngFor="let available of availables" class="content" mat-raised-button color="primary" matBadge="5"
+                <button *ngFor="let available of deckSummary.summary.available" class="content" mat-raised-button color="primary" matBadge="5"
                     matBadgePosition="before" matBadgeColor="accent" matBadgeSize="small">
                     {{available}}
                 </button>
             </div>
             <div>
                 <h3 class="contentHeader">Colors: </h3>
-                <button *ngFor="let colorType of colorTypes" class="content" mat-raised-button color="primary" matBadge="5"
+                <button *ngFor="let colorType of deckSummary.summary.colorTypes" class="content" mat-raised-button color="primary" matBadge="5"
                     matBadgePosition="before" matBadgeColor="accent" matBadgeSize="small">
                     {{colorType}}
                 </button>
@@ -63,7 +63,7 @@
     </mat-tab>
     <mat-tab label="Card List"> 
         <div class="tab">
-            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <table mat-table [dataSource]="deckSummary.cards" class="mat-elevation-z8">
 
                 <!-- name Column -->
                 <ng-container matColumnDef="name">

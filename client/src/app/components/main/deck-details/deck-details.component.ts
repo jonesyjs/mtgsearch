@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { DeckInformation } from 'src/app/models';
+import { Card, DeckInformation, Rarity } from 'src/app/models';
 import { DeckSearchService } from 'src/app/services/deck-search-service/deck-search.service';
-import { Color, Label, MultiDataSet } from 'ng2-charts';
-import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
+import { Label, MultiDataSet } from 'ng2-charts';
+import { ChartDataSets, ChartType } from 'chart.js';
 
 @Component({
   selector: 'app-deck-details',
@@ -12,45 +12,34 @@ import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 })
 export class DeckDetailsComponent implements OnInit {
 
-  $deckSummary: Observable<DeckInformation>
-
   //////////////////////////////////////////
-  doughnutChartLabels: Label[] = ['Common', 'Uncommon', 'Rare', 'Mythic'];
-  doughnutChartData: MultiDataSet = [[25, 25, 30, 20]];
+  doughnutChartLabels: Label[] = [Rarity.Common, Rarity.Uncommon, Rarity.Rare, Rarity.Mythic];
+  doughnutChartData: MultiDataSet = [[5, 15, 3, 12]];
   doughnutChartType: ChartType = 'doughnut';
   //////////////////////////////////////////
   barChartLabels: Label[] = ['1', '2', '3', '4', '5'];
   barChartType: ChartType = 'bar';
   barChartData: ChartDataSets[] = [{ data: [5, 10, 12, 7, 6], label: 'Mana Cost' }];
   //////////////////////////////////////////
-  public pieChartLabels: Label[] = ['Creatures', 'Sorcey', 'Instants'];
-  public pieChartData: number[] = [300, 500, 100];
-  public pieChartType: ChartType = 'pie';
-  public pieChartColors = [{ backgroundColor: ['rgba(255,0,0,0.3)', 'rgba(0,255,0,0.3)', 'rgba(0,0,255,0.3)'] }];
-  //////////////////////////////////////////
-  colorTypes = ['Black', 'Red'];
-  availables = ['mtgo', 'paper'];
-  formats = ['Standard', 'Modern'];
-  //////////////////////////////////////////
+  pieChartLabels: Label[] = ['Creatures', 'Sorcey', 'Instants'];
+  pieChartData: number[] = [300, 500, 100];
+  pieChartType: ChartType = 'pie';
+  pieChartColors = [{ backgroundColor: ['rgba(255,0,0,0.3)', 'rgba(0,255,0,0.3)', 'rgba(0,0,255,0.3)'] }];
+
+  //deck summary - summaries
+  colorTypes: string[];
+  availables: string[];
+  formats: string[];
+
+  //cardList
   displayedColumns: string[] = ['name', 'type', 'colors', 'manaCost'];
-  dataSource: any[] = [
-    { name: 'Flying Squirel', colors: ['Black', 'Red'], type: 'Creature', manaCost: 2 },
-    { name: 'Flying Squirel', colors: ['Black', 'Red'], type: 'Creature', manaCost: 2 },
-    { name: 'Flying Squirel', colors: ['Black', 'Red'], type: 'Creature', manaCost: 2 },
-    { name: 'Flying Squirel', colors: ['Black', 'Red'], type: 'Creature', manaCost: 2 },
-    { name: 'Flying Squirel', colors: ['Black', 'Red'], type: 'Creature', manaCost: 2 },
-    { name: 'Flying Squirel', colors: ['Black', 'Red'], type: 'Creature', manaCost: 2 },
-    { name: 'Flying Squirel', colors: ['Black', 'Red'], type: 'Creature', manaCost: 2 },
-    { name: 'Flying Squirel', colors: ['Black', 'Red'], type: 'Creature', manaCost: 2 },
-    { name: 'Flying Squirel', colors: ['Black', 'Red'], type: 'Creature', manaCost: 2 },
-    { name: 'Flying Squirel', colors: ['Black', 'Red'], type: 'Creature', manaCost: 2 }
-  ];
+  dataSource: Card[];
 
-  constructor(private deckService: DeckSearchService) { 
+  $deckSummary: Observable<DeckInformation>
+
+  constructor(public deckService: DeckSearchService) { 
   }
 
-  ngOnInit(): void {
-    this.$deckSummary = this.deckService.deck$;
-  }
+  ngOnInit(): void {}
 
 }

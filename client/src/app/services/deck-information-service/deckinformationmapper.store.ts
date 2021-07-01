@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { CardType, CardTypeSummary, DeckInformation, ManaCostSummary, Rarity, RaritySummary, SearchResult } from '../../models';
+import { Card, CardType, CardTypeSummary, DeckInformation, ManaCostSummary, Rarity, RaritySummary, SearchResult } from '../../models';
 import { Observable, of } from 'rxjs';
 
 @Injectable({
@@ -33,9 +33,9 @@ export class DeckInformationMapperService {
 
     var manaCosts: ManaCostSummary[] = [
       { cost: 1, amountOf: 5 },
-      { cost: 2, amountOf: 5 },
-      { cost: 3, amountOf: 5 },
-      { cost: 4, amountOf: 5 }
+      { cost: 2, amountOf: 7 },
+      { cost: 3, amountOf: 9 },
+      { cost: 4, amountOf: 11 }
     ]
 
     var cardTypes: CardTypeSummary[] = [
@@ -47,10 +47,20 @@ export class DeckInformationMapperService {
       { type: CardType.Instant, amountOf: 5 }
     ]
 
+    var available = ['mtgo', 'paper'];
+
+    var cards: Card[] = [
+      { name: 'Flying Squirel', colors: ['Black', 'Red'], type: CardType.Creature, manaCost: 2 },
+      { name: 'Flying Squirel', colors: ['Black', 'Red'], type: CardType.Creature, manaCost: 2 },
+      { name: 'Flying Squirel', colors: ['Black', 'Red'], type: CardType.Creature, manaCost: 2 },
+      { name: 'Flying Squirel', colors: ['Black', 'Red'], type: CardType.Creature, manaCost: 2 },
+      { name: 'Flying Squirel', colors: ['Black', 'Red'], type: CardType.Creature, manaCost: 2 }
+    ]
+
     return of([
-      { id: 1, title: "Red Deck Wins", summary: { formats: ['Standard', 'Commander'], colorTypes: ['Red'], rarities, manaCosts, cardTypes } },
-      { id: 2, title: "Blue Counter", summary: { formats: ['Standard', 'Modern'], colorTypes: ['Blue'], rarities, manaCosts, cardTypes } },
-      { id: 3, title: "Grixis Control", summary: { formats: ['Commander'], colorTypes: ['Black', 'Red', 'Blue'], rarities, manaCosts, cardTypes } }
+      { id: 1, title: "Red Deck Wins", cards, summary: { formats: ['Standard', 'Commander'], colorTypes: ['Red'], available, rarities, manaCosts, cardTypes } },
+      { id: 2, title: "Blue Counter", cards, summary: { formats: ['Standard', 'Modern'], colorTypes: ['Blue'], available, rarities, manaCosts, cardTypes } },
+      { id: 3, title: "Grixis Control", cards, summary: { formats: ['Commander'], colorTypes: ['Black', 'Red', 'Blue'], available, rarities, manaCosts, cardTypes } }
     ]);
-  } 
+  }
 }
