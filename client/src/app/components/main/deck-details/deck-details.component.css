@@ -1,7 +1,31 @@
+table {
+  width: 100%;
+}
+
 .tab-group {
     margin: 50px;
 }
 
 .tab {
     padding: 50px;
+}
+
+.chart {
+    display: 
+    block; 
+    width: 100%;
+}
+
+.contentHeader {
+    display: inline-block;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+.content {
+    margin-right: 10px;
+}
+
+.spacer {
+    margin: 30px 0px;
 }

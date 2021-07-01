@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { ChartsModule } from 'ng2-charts';
 
 import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/header/header/header.component';
@@ -27,6 +28,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -46,6 +48,7 @@ import { MatTabsModule } from '@angular/material/tabs';
     FormsModule,
     ReactiveFormsModule,
     NoopAnimationsModule,
+    ChartsModule,
     FlexLayoutModule,
     MatToolbarModule,
     MatButtonModule,
@@ -56,7 +59,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatAutocompleteModule,
     MatGridListModule,
     MatCardModule,
-    MatTabsModule
+    MatTabsModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
