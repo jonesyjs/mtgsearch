@@ -1,3 +1,10 @@
+import { CardType, Rarity } from "../constants";
+
+export interface Store {
+    searchResults: SearchResult[],
+    decks: DeckInformation[]
+}
+
 export interface SearchParameters {
     title: string
 }
@@ -5,7 +12,6 @@ export interface SearchParameters {
 export interface SearchResult {
     id: number,
     title: string,
-    formats: string[],
     colorTypes: string[],
 }
 
@@ -43,20 +49,4 @@ export interface Card {
     colors: string[],
     type: CardType,
     manaCost: number
-}
-
-export enum Rarity {
-    Common = 'Common',
-    Uncommon = 'Uncommon',
-    Rare = 'Rare',
-    Mythic = 'Mythic'
-}
-
-export enum CardType {
-    Creature = 'Creature',
-    Land = 'Land',
-    Enchantment = 'Enchantment',
-    Artifact = 'Artifact',
-    Instant = 'Instant',
-    Sorcery = 'Sorcery'
 }

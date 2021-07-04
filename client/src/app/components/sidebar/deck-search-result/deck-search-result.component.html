@@ -1,6 +1,6 @@
 <mat-card *ngFor="let searchResult of (this.deskSearchService.searchResults$ | async)" class="searchResult" (click)="displayDeckTabs(searchResult.id)">
     <mat-card-title>
-        <h3>{{searchResult.title}} - {{searchResult.formats}}</h3>
+        <h3>{{searchResult.title}}</h3>
     </mat-card-title>
     <mat-card-content>
         <button 

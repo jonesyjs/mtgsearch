@@ -5,40 +5,34 @@
             <mat-grid-list cols="3" rowHeight="2:1">
                 <mat-grid-tile>
                     <mat-grid-tile-header>
-                        <h3>Cards by Rarity: </h3>
+                        <h3>Cards by Type: </h3>
                     </mat-grid-tile-header>
-                    <canvas baseChart 
-                        [data]="doughnutChartData" 
-                        [labels]="doughnutChartLabels"
-                        [chartType]="doughnutChartType">
-                    </canvas>
+                    <app-graph-card-types [graphInfo]="deckSummary.summary.cardTypes">
+                    </app-graph-card-types>
                 </mat-grid-tile>
                 <mat-grid-tile>
                     <mat-grid-tile-header>
                         <h3>Mana Curve: </h3>
                     </mat-grid-tile-header>
-                    <canvas baseChart 
-                        [datasets]="barChartData" 
-                        [labels]="barChartLabels" 
-                        [chartType]="barChartType">
-                    </canvas>
+                    <app-graph-mana-curve [graphInfo]="deckSummary.summary.manaCosts"></app-graph-mana-curve>
                 </mat-grid-tile>
                 <mat-grid-tile>
                     <mat-grid-tile-header>
-                        <h3>Cards by Type: </h3>
+                        <h3>Cards by Rarity: </h3>
                     </mat-grid-tile-header>
-                    <canvas baseChart 
-                        [data]="pieChartData" 
-                        [labels]="pieChartLabels" 
-                        [chartType]="pieChartType" 
+                        <app-graph [data]="pieChartData" 
+                        [label]="pieChartLabels" 
+                        [chartType]="pieChartType"
                         [colors]="pieChartColors">
-                    </canvas>
+                        </app-graph>
+                        <app-graph-rarity [graphInfo]="deckSummary.summary.rarities"></app-graph-rarity>
                 </mat-grid-tile>
             </mat-grid-list>
 
             <hr class="spacer" />  
 
             <div>
+                <!-- Tags - Make into one - pass in title/collection -->
                 <h3 class="contentHeader">Formats: </h3>
                 <button *ngFor="let format of deckSummary.summary.formats" class="content" mat-raised-button color="primary" matBadge="5"
                     matBadgePosition="before" matBadgeColor="accent" matBadgeSize="small">

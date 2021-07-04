@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { DeckInformationMapperService } from './services/deck-information-service/deckinformationmapper.store';
 
 @Component({
   selector: 'app-root',
@@ -8,13 +9,10 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppComponent implements OnInit {
   title = 'client';
-  obs: any;
 
-  constructor(private http: HttpClient) {}
+  constructor(private deckStore: DeckInformationMapperService) {}
 
-  ngOnInit() {}
-
-  getDecks() {
-    this.obs = this.http.get('http://localhost:3000/decks');
+  ngOnInit() {
+    this.deckStore.ngOnInit();
   }
 }
