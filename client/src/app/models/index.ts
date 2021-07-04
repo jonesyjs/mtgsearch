@@ -47,6 +47,6 @@ export interface CardTypeSummary {
 export interface Card {
     name: string,
     colors: string[],
-    type: CardType,
+    type: string,
     manaCost: number
 }
